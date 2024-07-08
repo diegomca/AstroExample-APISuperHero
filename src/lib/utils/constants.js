@@ -1,1 +1,1 @@
-export const urlBase = "/AstroExample-APISuperHero/";
+export const urlBase = "/";

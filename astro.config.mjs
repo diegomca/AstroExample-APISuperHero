@@ -10,6 +10,6 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   output: "hybrid",
   adapter: netlify(),
-  site: "https://diegomca.github.io/",
-  base: "AstroExample-APISuperHero",
+  // site: "https://diegomca.github.io/",
+  // base: "AstroExample-APISuperHero",
 });
