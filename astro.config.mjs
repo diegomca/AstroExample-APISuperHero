@@ -11,5 +11,5 @@ export default defineConfig({
   output: "hybrid",
   adapter: netlify(),
   site: "https://diegomca.github.io/",
-  base: "/AstroExample-APISuperHero/",
+  base: "AstroExample-APISuperHero",
 });
