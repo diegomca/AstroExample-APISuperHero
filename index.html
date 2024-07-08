@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="es"> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/AstroExample-APISuperHero/favicon.svg"><meta name="generator" content="Astro v4.11.5"><title>SuperHero API</title><link rel="stylesheet" href="/AstroExample-APISuperHero/_astro/_id_.BsVgawEU.css"><script type="module">const l="/AstroExample-APISuperHero/";let o=[],i=[],a=1;const d=10;async function g(){o=await(await fetch("https://akabab.github.io/superhero-api/api/all.json")).json(),i=[...o],r(),document.getElementById("searchBar").addEventListener("input",u)}function u(t){const n=t.target.value.toLowerCase();i=o.filter(e=>e.name.toLowerCase().includes(n)),a=1,r()}function c(t){const n=(t-1)*d,e=Math.min(n+d,i.length);return{indiceInicial:n,indiceFinal:e}}function p(t){const{indiceInicial:n,indiceFinal:e}=c(t);return i.slice(n,e)}function h(){a>1&&(a--,r())}function m(){const t=Math.ceil(i.length/d);a<t&&(a++,r())}function r(){const t=p(a);f(t),y()}function f(t){const n=document.getElementById("superheroesList");n.innerHTML="",t.forEach(e=>{const s=document.createElement("div");s.className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700",s.innerHTML=`
+      <a href="${l}hero/${e.id}">
+        <img class="rounded-t-lg" src="${e.images.md}" alt="${e.name}" />
+      </a>
+      <div class="p-5">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            ${e.name}
+          </h5>
+        </a>
+        <p class="text-sm text-gray-700 dark:text-gray-400">
+          ${e.biography.fullName===""?e.name:e.biography.fullName}
+        </p>
+        <div class="mt-4">
+          <a href="#" class="inline-block px-3 py-1 text-xs font-semibold text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-400">
+            ${e.biography.publisher}
+          </a>
+        </div>
+      </div>
+    `,n.appendChild(s)})}function y(){const{indiceInicial:t,indiceFinal:n}=c(a),e=document.getElementById("paginationText");e.innerText=`Mostrando ${t+1} a ${n} de ${i.length} superhéroes`}document.addEventListener("DOMContentLoaded",g);document.getElementById("anterior").addEventListener("click",h);document.getElementById("siguiente").addEventListener("click",m);
+</script></head> <body>  <main class="flex flex-col gap-4 mb-8 lg:gap-8"> <header class="py-8 px-4 mx-auto lg:py-16 lg:px-6 flex justify-center items-center w-full bg-[url(https://images6.alphacoders.com/705/705204.jpg)] bg-cover bg-no-repeat min-h-[600px] bg-center"> <div class="mx-auto text-center flex flex-col gap-4 mb-8 lg:mb-16"> <h1 class="text-5xl font-bold text-white lg:text-7xl [text-shadow:2px_2px_4px_#000000]">
+SuperHero API
+</h1> <p class="text-lg text-gray-100 [text-shadow:2px_2px_4px_#000000] lg:text-2xl">
+Lista de superhéroes de todos los universos cinematosgráficos y de cómics.
+</p> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mx-auto lg:w-64 lg:py-3 lg:px-6 lg:text-xl lg:rounded-lg lg:hover:bg-blue-800 lg:focus:ring-4 lg:focus:outline-none lg:focus:ring-blue-300 lg:dark:bg-blue-600 lg:dark:hover:bg-blue-700 lg:dark:focus:ring-blue-800"> <a href="/AstroExample-APISuperHero/info">Ver información API</a> </button> </div> </header> <article class="p-[16px] min-h-[200px]"> <div class="flex flex-col gap-4"> <h2 class="text-2xl font-bold text-center text-gray-100 lg:text-5xl">
+Listado de superhéroes
+</h2> <p class="text-center text-gray-100">
+Aquí encontrarás una lista de superhéroes de todos los universos
+      cinematográficos y de cómics.
+</p> </div> <div class="mt-4 mb-4 text-center"> <input type="text" id="searchBar" placeholder="Buscar superhéroe..." class="w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-500 focus:outline-none focus:ring dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:focus:border-blue-500 dark:focus:ring max-w-[400px] mx-auto"> </div> <div id="superheroesList" class="flex flex-row gap-4 mt-16 flex-wrap justify-center"> <!-- Los superhéroes se renderizarán aquí dinámicamente --> </div> <div class="flex flex-col items-center mt-8"> <span id="paginationText" class="text-sm text-gray-700 dark:text-gray-400"> <!-- El texto de paginación se actualizará dinámicamente --> </span> <div class="inline-flex mt-2 xs:mt-0"> <button id="anterior" class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+Anterior
+</button> <button id="siguiente" class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+Siguiente
+</button> </div> </div> </article>  </main>  </body></html>
