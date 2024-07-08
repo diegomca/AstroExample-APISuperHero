@@ -9,5 +9,7 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: "hybrid",
-  adapter: netlify()
+  adapter: netlify(),
+  site: "https://diegomca.github.io/",
+  base: "/AstroExample-APISuperHero/",
 });

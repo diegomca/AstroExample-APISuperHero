@@ -1,6 +1,7 @@
 ---
 const { id } = Astro.params;
 import Layout from "../../layouts/Layout.astro";
+import { urlBase } from '../../lib/utils/constants.js';
 
 //The code snippet is checking if the `id` parameter is present. If the `id` parameter exists, it then performs an asynchronous fetch request to a superhero API endpoint to retrieve information about a specific superhero based on the provided `id`. The fetched data is then converted to JSON format and stored in the `hero` variable. This allows the page to dynamically fetch superhero data based on the `id` parameter provided in the URL.
 let hero;
@@ -15,12 +16,13 @@ if (id) {
 //The line `export const prerender = false` is setting the prerender property to false. In Astro, the prerender property determines whether the page should be prerendered or not. When prerender is set to false, the page will not be prerendered, meaning it will not be generated at build time but will be rendered on-demand when requested by a user. This can be useful for pages that have dynamic content or require data fetching at runtime.
 export const prerender = false
 
+
 ---
 
 <Layout title="SuperHero API">
   <article>
     <div class="mt-5 ml-5 mb-5">
-      <a href="/" class="flex text-white font-semibold pt-5">
+      <a href=`${urlBase}` class="flex text-white font-semibold pt-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6 inline-block mr-2"

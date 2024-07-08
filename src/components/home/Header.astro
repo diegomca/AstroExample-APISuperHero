@@ -1,3 +1,7 @@
+---
+import { urlBase } from "../../lib/utils/constants.js";
+---
+
 <header
   class="py-8 px-4 mx-auto lg:py-16 lg:px-6 flex justify-center items-center w-full bg-[url(https://images6.alphacoders.com/705/705204.jpg)] bg-cover bg-no-repeat min-h-[600px] bg-center"
 >
@@ -15,7 +19,7 @@
     <button
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mx-auto lg:w-64 lg:py-3 lg:px-6 lg:text-xl lg:rounded-lg lg:hover:bg-blue-800 lg:focus:ring-4 lg:focus:outline-none lg:focus:ring-blue-300 lg:dark:bg-blue-600 lg:dark:hover:bg-blue-700 lg:dark:focus:ring-blue-800"
     >
-      <a href="/info">Ver información API</a>
+      <a href=`${urlBase}info`>Ver información API</a>
     </button>
   </div>
 </header>

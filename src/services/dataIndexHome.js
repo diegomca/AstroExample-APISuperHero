@@ -1,6 +1,8 @@
 /* The code snippet is initializing variables for managing a list of superheroes and pagination in a
 JavaScript application. Here's what each variable is doing: */
 
+import { urlBase } from "../lib/utils/constants";
+
 let allSuperheroes = []; // Guarda todos los superhéroes
 let filteredSuperheroes = []; // Guarda los superhéroes filtrados
 let paginaActual = 1;
@@ -124,7 +126,7 @@ function renderSuperheroes(superheroes) {
       "max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700";
 
     heroDiv.innerHTML = `
-      <a href="/hero/${hero.id}">
+      <a href="${urlBase}hero/${hero.id}">
         <img class="rounded-t-lg" src="${hero.images.md}" alt="${hero.name}" />
       </a>
       <div class="p-5">
