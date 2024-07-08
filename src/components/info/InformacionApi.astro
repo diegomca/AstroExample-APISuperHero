@@ -1,0 +1,249 @@
+---
+import icon from "../../assets/image/iconAvengers.svg";
+import { Image } from "astro:assets";
+import CodigoJson from "./CodigoJson";
+---
+
+<div
+  class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0 rounded-xl"
+>
+  <div
+    class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10"
+  >
+    <div
+      class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
+    >
+      <div class="lg:pr-4">
+        <div class="lg:max-w-lg">
+          <p class="text-base font-semibold leading-7 text-indigo-600">
+            API PUBLICA GRATUITA
+          </p>
+          <h1
+            class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            superhero-api
+          </h1>
+          <p class="mt-6 text-xl leading-8 text-gray-700">
+            Multiples datos de superhéroes de Marvel y DC Comics.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="-ml-12 -mt-12 p-12 sm:p-1 sm:mt-1 sm:ml-1 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden"
+    >
+      <img
+        class="w-full sm:w-[100%] lg:w-[100%] xl:w-[35rem] rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 mb-4"
+        src="https://i0.wp.com/www.tomosygrapas.com/wp-content/uploads/2016/07/marvelstudios-7611c.jpg"
+        alt=""
+      />
+      <img
+        class="w-full sm:w-[100%] lg:w-[100%] xl:w-[35rem] rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 mb-4"
+        src="https://opengraph.githubassets.com/e937f11acc5dc0f55ef262c23cce435f2b0820ba571f411f1da6d5918b8a3273/akabab/superhero-api"
+        alt=""
+      />
+    </div>
+
+    <div
+      class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
+    >
+      <div class="lg:pr-4">
+        <div class="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
+          <h4 class="text-lg font-semibold text-gray-900">
+            ¿Qué es un superhéroe?
+          </h4>
+          <p>
+            Los superhéroes son personajes ficticios con habilidades
+            extraordinarias que dedican su vida a proteger al mundo de amenazas
+            y villanos. Estos héroes pueden pertenecer a diferentes universos y
+            ser creados por distintas editoriales, siendo los más conocidos los
+            de Marvel y DC Comics.
+          </p>
+          <h4 class="text-lg font-semibold text-gray-900 mt-6">
+            ¿Qué es la API de Superhéroes?
+          </h4>
+          <p>
+            La API de Superhéroes es una interfaz RESTful de código abierto que
+            permite acceder a información detallada sobre múltiples superhéroes
+            de diferentes universos. Proporciona datos como estadísticas de
+            poder, apariencia, biografía, conexiones y más.
+          </p>
+          <h4 class="text-lg font-semibold text-gray-900 mt-6">
+            Cómo obtener los datos
+          </h4>
+          <p>
+            Para utilizar la API, se pueden realizar peticiones HTTP a las
+            siguientes rutas:
+          </p>
+          <ul role="list" class="mt-8 space-y-8 text-gray-600">
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900">/all.json:</strong>
+                Obtén todos los superhéroes en un único archivo JSON. <br />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/all.json
+              </span>
+            </li>
+
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900"
+                  >/id/&lbrace;id.json&rbrace;:</strong
+                >
+                Obtén información completa de un superhéroe específico por su ID.
+                <br />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/id/1.json
+              </span>
+            </li>
+
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900"
+                  >/powerstats/&lbrace;id.json&rbrace;:</strong
+                >
+                Obtén estadísticas de poder de un superhéroe por su ID. <br />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/powerstats/1.json
+              </span>
+            </li>
+
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900"
+                  >/appearance/&lbrace;id.json&rbrace;:</strong
+                >
+                Obtén detalles de la apariencia de un superhéroe por su ID. <br
+                />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/appearance/1.json
+              </span>
+            </li>
+
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900"
+                  >/biography/&lbrace;id.json&rbrace;:</strong
+                >
+                Accede a la biografía de un superhéroe por su ID. <br />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/biography/1.json
+              </span>
+            </li>
+
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900"
+                  >/connections/&lbrace;id.json&rbrace;:</strong
+                >
+                Consulta las conexiones y afiliaciones de un superhéroe por su ID.
+                <br />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/connections/1.json
+              </span>
+            </li>
+
+            <li class="flex gap-x-3">
+              <Image src={icon} alt="icono" width={45} height={45} />
+              <span>
+                <strong class="font-semibold text-gray-900"
+                  >/work/&lbrace;id.json&rbrace;:</strong
+                >
+                Obtén información sobre el trabajo y la ocupación de un superhéroe
+                por su ID. <br />
+                <strong class="font-semibold text-gray-900">Ejemplo:</strong> https://akabab.github.io/superhero-api/api/work/1.json
+              </span>
+            </li>
+          </ul>
+          <h1
+            class="mt-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4"
+          >
+            Ejemplos de uso
+          </h1>
+          <h2 class="text-2xl font-bold mb-4">Ejemplo de Datos JSON</h2>
+          <CodigoJson client:load />
+          <pre
+            class="mb-6">
+<code class="language-json">
+&#91;
+  &#123;
+    "id": 1,
+    "name": "A-Bomb",
+    "powerstats": &#123;
+      "intelligence": 38,
+      "strength": 100,
+      "speed": 17,
+      "durability": 80,
+      "power": 24,
+      "combat": 64
+    &#125;,
+    "appearance": &#123;
+      "gender": "Male",
+      "race": "Human",
+      "height": ["6'8", "203 cm"],
+      "weight": ["980 lb", "441 kg"],
+      "eyeColor": "Yellow",
+      "hairColor": "No Hair"
+    &#125;,
+    "biography": &#123;
+      "fullName": "Richard Milhouse Jones",
+      "alterEgos": "No alter egos found.",
+      "aliases": ["Rick Jones"],
+      "placeOfBirth": "Scarsdale, Arizona",
+      "firstAppearance": "Hulk Vol 2 #2 (April, 2008) (as A-Bomb)",
+      "publisher": "Marvel Comics",
+      "alignment": "good"
+    &#125;,
+    "work": &#123;
+      "occupation": "Musician, adventurer, author; formerly talk show host",
+      "base": "-"
+    &#125;,
+    "connections": &#123;
+      "groupAffiliation": "Hulk Family; Excelsior (sponsor), Avengers (honorary member)",
+      "relatives": "Marlo Chandler-Jones (wife); Polly (aunt); Mrs. Chandler (mother-in-law); Kei"
+    &#125;,
+    "images": &#123;
+      "xs": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg",
+      "sm": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg",
+      "md": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/1-a-bomb.jpg",
+      "lg": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg"
+    &#125;
+  &#125;
+&#93;
+</code>
+    </pre>
+
+          <h2 class="text-2xl font-bold mb-4">
+            Ejemplo de Solicitud Fetch en Node.js
+          </h2>
+          <pre
+            class="mb-6">
+<code class="language-js">
+const fetch = require('node-fetch');
+
+const url = 'https://akabab.github.io/superhero-api/api/all.json';
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => &#123
+    console.log('Superheroes data:', data);
+  &#125)
+  .catch(error => &#123
+    console.error('Error fetching superheroes data:', error);
+  &#125);
+</code>
+    </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  pre {
+    background-color: #050505;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+</style>

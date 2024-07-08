@@ -1,0 +1,177 @@
+---
+const { id } = Astro.params;
+import Layout from "../../layouts/Layout.astro";
+
+//The code snippet is checking if the `id` parameter is present. If the `id` parameter exists, it then performs an asynchronous fetch request to a superhero API endpoint to retrieve information about a specific superhero based on the provided `id`. The fetched data is then converted to JSON format and stored in the `hero` variable. This allows the page to dynamically fetch superhero data based on the `id` parameter provided in the URL.
+let hero;
+
+if (id) {
+  hero = await fetch(
+    `https://akabab.github.io/superhero-api/api//id/${id}.json`
+  );
+  hero = await hero.json();
+}
+
+//The line `export const prerender = false` is setting the prerender property to false. In Astro, the prerender property determines whether the page should be prerendered or not. When prerender is set to false, the page will not be prerendered, meaning it will not be generated at build time but will be rendered on-demand when requested by a user. This can be useful for pages that have dynamic content or require data fetching at runtime.
+export const prerender = false
+
+---
+
+<Layout title="SuperHero API">
+  <article>
+    <div class="mt-5 ml-5 mb-5">
+      <a href="/" class="flex text-white font-semibold pt-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 inline-block mr-2"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Volver
+      </a>
+    </div>
+    <div
+      class="w-full rounded-lg shadow-lg overflow-hidden max-w-[1000px] mx-auto"
+    >
+      <div class="relative max-w-[1000px] mx-auto">
+        <img
+          src={hero.images.lg}
+          alt={hero.name}
+          class="w-full h-full max-h-[500px] object-cover rounded-3xl cursor-pointer"
+          id="heroImage_page"
+        />
+        <div class="absolute bottom-4 left-4">
+          <h1 class="text-4xl font-bold">{hero.name}</h1>
+        </div>
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-4">Estadisticas</h2>
+        <div class="grid grid-cols-3 gap-4">
+          {
+            Object.entries(hero.powerstats).map(([stat, value]) => (
+              <div class="flex flex-col items-center">
+                <div class="text-yellow-400 text-3xl font-bold">{value}</div>
+                <div class="text-gray-400 uppercase">{stat}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-4">APARIENCIA</h2>
+        <div class="bg-gray-800 p-4 rounded-lg mb-6">
+          {
+            Object.entries(hero.appearance).map(([key, value]) => (
+              <div class="mb-4 flex flex-row gap-4">
+                <h3 class="text-lg font-semibold uppercase">{key}</h3>
+                <p>{Array.isArray(value) ? value.join(", ") : value}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <h2 class="text-2xl font-semibold mb-4">BIOGRAFIA</h2>
+        <div class="bg-gray-800 p-4 rounded-lg mb-6">
+          {
+            Object.entries(hero.biography).map(([key, value]) => (
+              <div class="mb-4 flex flex-row gap-4">
+                <h3 class="text-lg font-semibold uppercase">{key}</h3>
+                <p>{Array.isArray(value) ? value.join(", ") : value}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <h2 class="text-2xl font-semibold mb-4">TRABAJO</h2>
+        <div class="bg-gray-800 p-4 rounded-lg mb-6">
+          {
+            Object.entries(hero.work).map(([key, value]) => (
+              <div class="mb-4 flex flex-row gap-4">
+                <h3 class="text-lg font-semibold uppercase">{key}</h3>
+                <p>{value}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <h2 class="text-2xl font-semibold mb-4">CONEXIONES</h2>
+        <div class="bg-gray-800 p-4 rounded-lg mb-6">
+          {
+            Object.entries(hero.connections).map(([key, value]) => (
+              <div class="mb-4 flex flex-row gap-4">
+                <h3 class="text-lg font-semibold uppercase">{key}</h3>
+                <p>{value}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div
+      id="imageModal"
+      class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
+    >
+      <div class="modal-content relative max-w-2xl">
+        <img id="modalImage" src="" alt="Superhero full image" />
+        <button
+          id="closeModal"
+          class="absolute top-4 right-4 text-white text-2xl">&times;</button
+        >
+      </div>
+    </div>
+    <script>
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById(
+        "modalImage"
+      ) as HTMLImageElement;
+      const closeModal = document.getElementById("closeModal");
+      const heroImage = document.getElementById(
+        "heroImage_page"
+      ) as HTMLImageElement;
+
+      if (heroImage && modalImage && modal) {
+        heroImage.addEventListener("click", () => {
+          modalImage.src = heroImage.src;
+          modal.classList.remove("hidden");
+        });
+      }
+
+      if (closeModal && modal) {
+        closeModal.addEventListener("click", () => {
+          modal.classList.add("hidden");
+        });
+      }
+
+      if (modal) {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+          }
+        });
+      }
+    </script>
+  </article>
+</Layout>
+
+<style>
+  .modal {
+    transition: opacity 0.3s ease;
+  }
+  .modal-content {
+    transition: transform 0.3s ease;
+  }
+  .modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .modal.hidden .modal-content {
+    transform: scale(0.9);
+  }
+</style>
